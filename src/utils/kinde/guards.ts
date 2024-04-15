@@ -25,6 +25,9 @@ async function _waitAndFail() {
  */
 export async function redirectToLoginOrGetAccessToken(): Promise<string> {
   // called from index.html
+  try {
+    await kinde.refreshTokens()
+  } catch {}
   const isAuthenticated = await kinde.isAuthenticated()
 
   if (!isAuthenticated) {

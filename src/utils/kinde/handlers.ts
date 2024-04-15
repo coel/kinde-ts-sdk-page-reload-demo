@@ -9,6 +9,7 @@ export async function handleCallback() {
   console.log("Handling callback...")
   // Exchange auth code in query string for tokens
   await kinde.handleRedirectToApp(new URL(window.location.toString()))
+  await kinde.refreshTokens()
   // Redirect back to app
   console.log("... redirecting to /")
   window.location.href = "/"
